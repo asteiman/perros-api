@@ -30,6 +30,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
         let dbUsername: String = Environment.get("DB_USERNAME"),
         let dbPassword: String = Environment.get("DB_PASSWORD"),
         let dbName: String = Environment.get("DB_NAME") else {
+        print("Unable to connect to DB server")
         throw Abort(.internalServerError)
     }
 
