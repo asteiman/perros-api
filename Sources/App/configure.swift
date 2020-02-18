@@ -52,17 +52,17 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     databases.add(database: mysql, as: .mysql)
     services.register(databases)
 
-//    /// Configure migrations
-//    var migrations = MigrationConfig()
-//    migrations.add(model: User.self, database: .mysql)
-//    migrations.add(model: UserToken.self, database: .mysql)
-//    migrations.add(model: Customer.self, database: .mysql)
-//    migrations.add(model: Billing.self, database: .mysql)
-//    migrations.add(model: Product.self, database: .mysql)
-//    migrations.add(model: MailConfig.self, database: .mysql)
-//    migrations.add(model: Invoice.self, database: .mysql)
-//    migrations.add(model: InvoiceDetail.self, database: .mysql)
-//    services.register(migrations)
+    /// Configure migrations
+    var migrations = MigrationConfig()
+    migrations.add(model: User.self, database: .mysql)
+    migrations.add(model: UserToken.self, database: .mysql)
+    migrations.add(model: Customer.self, database: .mysql)
+    migrations.add(model: Billing.self, database: .mysql)
+    migrations.add(model: Product.self, database: .mysql)
+    migrations.add(model: MailConfig.self, database: .mysql)
+    migrations.add(model: Invoice.self, database: .mysql)
+    migrations.add(model: InvoiceDetail.self, database: .mysql)
+    services.register(migrations)
     
     if let mailgunKey: String = Environment.get("MAILGUN") {
         let mailgunProvider = Mailgun(apiKey: mailgunKey)
