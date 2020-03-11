@@ -13,8 +13,8 @@ import Mailgun
 /// Simple todo-list controller.
 final class CustomerController {
 
-    func index(_ req: Request) throws -> Future<Paginated<Customer>> {
-        return try Customer.query(on: req).sort(\.id, ._ascending).paginate(for: req)
+    func index(_ req: Request) throws -> Future<[Customer]> {
+        return Customer.query(on: req).sort(\.id).all()
     }
     
     func mail(_ req: Request) throws -> Future<Response> {
