@@ -5,8 +5,6 @@ import Vapor
 public func routes(_ router: Router) throws {
     // public routes
     let userController = UserController()
-    router.get("dashboard", use: DashboardController().index)
-
     
     // basic / password auth protected routes
     let basic = router.grouped(User.basicAuthMiddleware(using: BCryptDigest()))
@@ -26,5 +24,5 @@ public func routes(_ router: Router) throws {
     bearer.get("invoices", Invoice.parameter, use: InvoiceController().single)
     
     // Dashboard
-    //bearer.get("dashboard", use: DashboardController().index)
+    bearer.get("dashboard", use: DashboardController().index)
 }
