@@ -8,13 +8,13 @@
 import Foundation
 import Vapor
 
-struct OrderCountResult: Encodable, Content {
+struct OrderCountDatabaseResult: Encodable, Content {
     var year: String
     var month: String
     var count: Int
 }
 
-struct Dashboard: Codable, Content {
+struct OrdersPerYear: Codable, Content {
     var year: String
     var orders: [OrderPerMonth]
     
@@ -22,4 +22,15 @@ struct Dashboard: Codable, Content {
         var month: Int
         var count: Int
     }
+}
+
+struct Dashboard: Codable, Content {
+    var orders: [OrdersPerYear]
+    var customers: [CustomerBilling]
+}
+
+struct CustomerBilling: Codable {
+    var id: Int
+    var name: String
+    var total: Double
 }
