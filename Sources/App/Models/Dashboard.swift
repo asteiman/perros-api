@@ -27,10 +27,17 @@ struct OrdersPerYear: Codable, Content {
 struct Dashboard: Codable, Content {
     var orders: [OrdersPerYear]
     var customers: [CustomerBilling]
+    var billing: [BillingResponse]
 }
 
 struct CustomerBilling: Codable {
     var id: Int
+    var year: String
     var name: String
+    var total: Double
+}
+
+struct BillingResponse: Codable {
+    var year: String
     var total: Double
 }

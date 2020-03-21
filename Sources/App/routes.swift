@@ -5,7 +5,6 @@ import Vapor
 public func routes(_ router: Router) throws {
     // public routes
     let userController = UserController()
-    //router.get("dashboard", use: DashboardController().index)
 
     // basic / password auth protected routes
     let basic = router.grouped(User.basicAuthMiddleware(using: BCryptDigest()))
