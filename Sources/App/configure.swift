@@ -64,6 +64,12 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     migrations.add(model: InvoiceDetail.self, database: .mysql)
     services.register(migrations)
     
+    var content = ContentConfig.default()
+    let encoder = JSONEncoder()
+    encoder.dateEncodingStrategy = .deferredToDate
+    content.use(encoder: encoder, for: .json)
+    services.register(content)
+    
     if let mailgunKey: String = Environment.get("MAILGUN") {
         let mailgunProvider = Mailgun(apiKey: mailgunKey)
         services.register(mailgunProvider)
