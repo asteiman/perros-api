@@ -54,14 +54,14 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
 
     /// Configure migrations
     var migrations = MigrationConfig()
-    migrations.add(model: User.self, database: .mysql)
-    migrations.add(model: UserToken.self, database: .mysql)
-    migrations.add(model: Customer.self, database: .mysql)
-    migrations.add(model: Billing.self, database: .mysql)
-    migrations.add(model: Product.self, database: .mysql)
-    migrations.add(model: MailConfig.self, database: .mysql)
-    migrations.add(model: Invoice.self, database: .mysql)
-    migrations.add(model: InvoiceDetail.self, database: .mysql)
+    migrations.add(model: User.self, database: DatabaseIdentifier<User.Database>.mysql)
+    migrations.add(model: UserToken.self, database: DatabaseIdentifier<UserToken.Database>.mysql)
+    migrations.add(model: Customer.self, database: DatabaseIdentifier<Customer.Database>.mysql)
+    migrations.add(model: Billing.self, database: DatabaseIdentifier<Billing.Database>.mysql)
+    migrations.add(model: Product.self, database: DatabaseIdentifier<Product.Database>.mysql)
+    migrations.add(model: MailConfig.self, database: DatabaseIdentifier<MailConfig.Database>.mysql)
+    migrations.add(model: Invoice.self, database: DatabaseIdentifier<Invoice.Database>.mysql)
+    migrations.add(model: InvoiceDetail.self, database: DatabaseIdentifier<InvoiceDetail.Database>.mysql)
     services.register(migrations)
     
     var content = ContentConfig.default()
